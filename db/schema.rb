@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 2023_12_02_193505) do
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_193505) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_193505) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_193505) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "role", default: "user"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
