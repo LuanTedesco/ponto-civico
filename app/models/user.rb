@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :likes
+
+  enum role: { user: 'user', admin: 'admin', moderator: 'moderator' }
 end
