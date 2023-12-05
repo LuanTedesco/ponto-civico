@@ -3,10 +3,10 @@
     <strong>Content:</strong>
     <%= comment.content %>
   </p>
-
+<% if current_user.role == "admin" %>
   <p>
     <strong>Status:</strong>
     <%= comment.status %>
   </p>
-
+  <% end %>
 </div>

@@ -8,10 +8,12 @@
     <strong>Body:</strong>
     <%= post.body %>
   </p>
-
+<% if current_user.role == "admin" %>
   <p>
     <strong>Status:</strong>
     <%= post.status %>
   </p>
+  <% end %>
+  
 
 </div>

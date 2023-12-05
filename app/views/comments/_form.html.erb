@@ -16,10 +16,12 @@
     <%= form.text_field :content %>
   </div>
 
-  <div>
+<% if current_user.role == "admin" %>
+    <div>
     <%= form.label :status, style: "display: block" %>
     <%= form.check_box :status %>
   </div>
+<% end %>
 
   <div>
     <%= form.submit %>
