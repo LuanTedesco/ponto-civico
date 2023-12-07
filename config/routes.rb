@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   resources :likes
   resources :comments
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
