@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def create
@@ -30,24 +31,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+      redirect_to @comment.post, notice: "Comment was successfully updated."
   end
 
   def destroy
     @comment.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to comments_url, notice: "Comment was successfully destroyed."
   end
 
   private
@@ -56,6 +47,8 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content, :status, :user_id, :post_id)
+      permitted_params = params.require(:comment).permit(:content, :user_id, :post_id)
+      permitted_params[:status] = params[:status] if current_user.admin? || current_user.moderator?
+      permitted_params
     end
 end

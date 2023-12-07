@@ -5,7 +5,15 @@
       <% @comments.each do |comment| %>
         <div class="comment mb-3 pb-3 border-bottom">
           <p class="comment-info"><strong><%= comment.user.username %></strong> - <%= comment.created_at.strftime("%d/%m/%Y") %>:</p>
-          <%= render comment %>
+          <div class="comment-content">
+            <%= render comment %>
+          </div>
+          <% if current_user.id == comment.user_id %>
+            <div class="btn-group" role="group">
+              <%= link_to "Edit comment", edit_comment_path(comment), class: "btn btn-primary mr-2" %>
+              <%= button_to "Destroy comment", comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
