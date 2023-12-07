@@ -7,6 +7,7 @@
         <div class="card mb-3">
           <%= link_to post, class: "text-decoration-none text-dark" do %>
             <div class="card-body">
+              <p class="post-info"><strong><%= post.user.username if post.user %></strong> - <%= post.created_at.strftime("%d/%m/%Y") %>:</p>
               <%= render post %>
             </div>
           <% end %>
