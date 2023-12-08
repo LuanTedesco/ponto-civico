@@ -1,35 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-evenly bg-color-2">
   <div>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <% if current_user.present? %>
-        <%= "Username:  #{current_user.username}" %> <br>
-        <%= "Email:  #{current_user.email}" %>
-      <% end %>
       <%= link_to "PontoCivico", root_path, class: "navbar-brand font-weight-bold text-white" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Posts", posts_path, class: "nav-link text-white" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "New Post", new_post_path, class: "nav-link text-white" %>
+          <%= link_to new_post_path, class: "text-white btn btn-outline-secondary rounded-pill" do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
         </li>
       </ul>
     </div>
   </div>
   <div style="width: 30%;">
     <form class="form-inline" action="<%= search_posts_path %>" method="get">
-  <div class="input-group">
-    <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_term">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="submit" id="search-addon">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </div>
-</form>
+      <div class="input-group">
+        <input type="text" class="form-control rounded rounded-pill" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_term">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary rounded-pill" type="submit" id="search-addon">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <div>
     <% if current_user %>
