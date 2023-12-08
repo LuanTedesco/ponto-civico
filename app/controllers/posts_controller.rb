@@ -37,6 +37,13 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "Post was successfully destroyed."
   end
 
+  def search
+    @search_term = params[:search_term]
+    @posts = Post.where("title LIKE ?", "%#{@search_term}%")
+
+    render :index
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
