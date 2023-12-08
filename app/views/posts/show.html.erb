@@ -1,24 +1,20 @@
 <div class="container mt-4">
-  <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary mr-2" %>
 
-  <div class="card mt-3">
-    <div class="card-body">
-      <p class="post-info"><strong><%= @post.user.username %></strong> - <%= @post.created_at.strftime("%d/%m/%Y") %>:</p>
+  <div class="custom-card mb-3">
+    <div class="custom-card-body bg-color-2 text-white">
+      <p class="post-info"><strong><%= @post.user.username if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago</p>
       <%= render @post %>
-    </div>
-  </div>
 
-  <div class="mt-3">
-    <% if current_user.id == @post.user_id %>
-      <div class="btn-group" role="group">
-        <%= link_to "Edit post", edit_post_path(@post), class: "btn btn-primary mr-2" %>
-        <%= button_to "Destroy post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <div class="mt-3">
+        <% if current_user.id == @post.user_id %>
+          <div class="btn-group" role="group">
+            <%= link_to "Edit", edit_post_path(@post), class: "btn btn-dark mr-2" %>
+            <%= button_to "Destroy post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-
-  <div class="card mt-3">
-    <div class="card-body">
-      <%= render partial: 'comments/index', locals: { comments: @comments } %>
     </div>
   </div>
+
+  <%= render partial: 'comments/index', locals: { comments: @comments } %>
+</div>

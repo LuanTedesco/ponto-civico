@@ -1,17 +1,18 @@
-<div class="card mt-3">
-  <div class="card-body">
-    <h5 class="card-title border-bottom">Comments</h5>
+  <div class="custom-card mb-3">
+    <div class="custom-card-body bg-color-2 text-white">
+    <h5 class="card-title">Comments</h5>
     <div id="comments">
       <% @comments.each do |comment| %>
-        <div class="comment mb-3 pb-3 border-bottom">
-          <p class="comment-info"><strong><%= comment.user.username %></strong> - <%= comment.created_at.strftime("%d/%m/%Y") %>:</p>
+        <div class="comment mb-3 pb-3">
+          <hr>
+          <p class="comment-info"><strong><%= @post.user.username if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago</p>
           <div class="comment-content">
             <%= render comment %>
           </div>
           <% if current_user.id == comment.user_id %>
             <div class="btn-group" role="group">
-              <%= link_to "Edit comment", edit_comment_path(comment), class: "btn btn-primary mr-2" %>
-              <%= button_to "Destroy comment", comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-dark mr-2" %>
+              <%= button_to "Destroy comment", comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
             </div>
           <% end %>
         </div>
@@ -23,7 +24,7 @@
         <div class="form-group">
           <%= f.text_area :content, class: "form-control", placeholder: "Enter your comment here", rows: 3 %>
         </div>
-        <%= f.submit "Create Comment", class: "btn btn-primary" %>
+        <%= f.submit "Create Comment", class: "btn btn-secondary" %>
       <% end %>
     </div>
   </div>
