@@ -1,7 +1,7 @@
 <section class="d-flex justify-content-center vh-100">
   <div class="vh-100 w-100 d-flex align-items-center">
-    <div class="d-flex flex-column justify-content-center align-items-center col-lg-3 col-md-8 col-sm-10 col-12 mx-auto" style="border-radius: 30px; background-color: lightgray; padding: 20px;">
-      <%= image_tag("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3C/svg%3E", style: "height: 200px; width: 200px;") %>
+    <div class="d-flex flex-column justify-content-center align-items-center col-lg-3 col-md-8 col-sm-10 col-12 mx-auto bg-color-2" style="border-radius: 30px; padding: 20px;">
+      <%= image_tag("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='0.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3C/svg%3E", style: "height: 200px; width: 200px;") %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field my-4">
@@ -15,7 +15,7 @@
         <% if devise_mapping.rememberable? %>
           <div class="field my-4">
             <%= f.check_box :remember_me, class: "form-check-input" %>
-            <%= f.label :remember_me, class: "form-check-label" %>
+            <%= f.label :Lembre_me, class: "form-check-label text-white" %>
           </div>
         <% end %>
         <div class="actions d-flex justify-content-center">
