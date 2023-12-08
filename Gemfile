@@ -33,6 +33,8 @@ gem 'devise'
 
 gem 'sqlite3'
 
+gem 'rails-timeago'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
