@@ -9,3 +9,26 @@
 .text {
   color: white;
 }
+
+.custom-card {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.custom-card-body {
+  padding: 20px;
+}
+
+.custom-card-footer {
+  padding: 10px;
+  background-color: #243439;
+}
+
+.post-title {
+  font-size: 25px;
+}
+
+.avatar-small {
+  width: 32px;
+  height: 32px;
+}
