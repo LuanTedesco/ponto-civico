@@ -17,7 +17,7 @@
   <div style="width: 30%;">
     <form class="form-inline" action="<%= search_posts_path %>" method="get">
       <div class="input-group">
-        <input type="text" class="form-control rounded rounded-pill" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" name="search_term">
+        <input type="text" class="form-control rounded rounded-pill rola" style="background-color: #0b1416; border: 0; color: white; placeholder:white;" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" name="search_term">
         <div class="input-group-append mx-2">
           <button class="btn btn-outline-secondary rounded-pill" type="submit" id="search-addon">
             <i class="fa fa-search"></i>
@@ -39,3 +39,8 @@
     <% end %>
   </div>
 </nav>
+<style>
+  .rola::placeholder {
+      color: white;
+    }
+</style>
