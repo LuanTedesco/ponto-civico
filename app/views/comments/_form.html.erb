@@ -1,6 +1,6 @@
-<%= form_with(model: comment) do |form| %>
+<%= form_with(model: comment, class: 'my-4') do |form| %>
   <% if comment.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_field :content, class: "form-control" %>
   </div>
 
-<% if current_user.role == "admin" %>
-    <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.check_box :status %>
-  </div>
-<% end %>
+  <% if current_user.role == "admin" %>
+    <div class="mb-3">
+      <%= form.label :status, class: "form-check-label" %>
+      <%= form.check_box :status, class: "form-check-input" %>
+    </div>
+  <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary mt-2" %>
   </div>
 <% end %>
