@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      permitted_params = params.require(:post).permit(:title, :body, :user_id)
+      permitted_params = params.require(:post).permit(:title, :body, :image, :user_id)
       permitted_params[:status] = params[:status] if current_user.admin? || current_user.moderator?
       permitted_params
     end
