@@ -1,3 +1,5 @@
+<div class="container mt-4 d-flex align-items-center">
+  <div class="mx-auto col-md-8 col-lg-6">
     <%= form_with(model: post) do |form| %>
       <% if post.errors.any? %>
         <div class="alert alert-danger">
@@ -12,27 +14,33 @@
       <% end %>
 
       <div class="form-group">
-        <%= form.label :title, class: "font-weight-bold" %>
+        <%= form.label :title, class: "font-weight-bold text-white" %>
         <%= form.text_field :title, class: "form-control", placeholder: "Enter the title" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :body, class: "font-weight-bold" %>
+        <%= form.label :body, class: "font-weight-bold text-white" %>
         <%= form.text_area :body, class: "form-control", placeholder: "Enter the body" %>
       </div>
 
       <div class="form-group">
-        <%= form.file_field :image %>
+        <%= form.label :image, class: "font-weight-bold text-white" %>
+        <div class="custom-file">
+          <%= form.file_field :image, class: "custom-file-input text-white", id: "customFile" %>
+          <%= form.label :image, class: "custom-file-label text-white", for: "customFile" %>
+        </div>
       </div>
 
       <% if current_user.role == 'admin' %>
-        <div class="form-group form-check">
-        <%= form.check_box :status, class: "form-check-input" %>
+        <div class="form-group form-check text-white">
+        <%= form.check_box :status, class: "form-check-input text-white" %>
         <%= form.label :status, class: "form-check-label" %>
       </div>
       <% end %>
 
       <div class="form-group">
-        <%= form.submit class: "btn btn-secondary mt-2" %>
+        <%= form.submit class: "btn btn-secondary mt-2 text-white" %>
       </div>
     <% end %>
+  </div>
+</div>
