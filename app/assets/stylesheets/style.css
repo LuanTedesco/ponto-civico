@@ -32,3 +32,7 @@
   width: 32px;
   height: 32px;
 }
+.post-image {
+  max-width: 100%;
+  display: block;
+}

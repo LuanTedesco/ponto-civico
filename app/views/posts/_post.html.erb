@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>">
+<div id="<%= dom_id post %>" class="post-container">
   <p>
     <strong class="post-title">
       <%= post.title %>
@@ -8,6 +8,13 @@
   <p>
     <%= post.body %>
   </p>
+
+  <% if post.image.attached? %>
+  <p>
+    <%= image_tag post.image, class: "post-image" %>
+  </p>
+<% end %>
+
   <% if current_user && current_user.role == "admin" %>
     <p>
       <strong>Status:</strong>
