@@ -1,43 +1,35 @@
 <div class="container mt-4">
-
   <div class="custom-card mb-3">
     <div class="custom-card-body bg-color-2 text-white">
       <p class="post-info"><strong><%= @post.user.username if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago</p>
-
       <div id="post-container">
         <%= render @post %>
       </div>
-
       <div id="edit-post-form-container" style="display: none;">
         <%= render 'posts/form_edit', post: @post %>
       </div>
-
-      <div class="mt-3">
+      <div class="mt-3 d-flex justify-content-between">
         <% if current_user.id == @post.user_id %>
-          <div class="btn-group" role="group">
-            <%= link_to "Edit", "javascript:void(0);", class: "btn btn-dark mr-2", id: "edit-post-button" %>
-            <%= button_to "Destroy post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
-          </div>
+          <%= link_to "Edit", "javascript:void(0);", class: "btn btn-dark mr-2", id: "edit-post-button" %>
+          <%= button_to "Destroy post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
         <% end %>
       </div>
     </div>
   </div>
-
   <%= render partial: 'comments/index', locals: { comments: @comments } %>
 </div>
-
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const editButton = document.getElementById("edit-post-button");
-  const editFormContainer = document.getElementById("edit-post-form-container");
-  const postContainer = document.getElementById("post-container");
+  document.addEventListener("DOMContentLoaded", function () {
+    const editButton = document.getElementById("edit-post-button");
+    const editFormContainer = document.getElementById("edit-post-form-container");
+    const postContainer = document.getElementById("post-container");
 
-  if (editButton && editFormContainer && postContainer) {
-    editButton.addEventListener("click", function () {
-      editFormContainer.style.display = "block";
-      postContainer.style.display = "none";
-      editButton.style.display = "none";
-    });
-  }
-});
+    if (editButton && editFormContainer && postContainer) {
+      editButton.addEventListener("click", function () {
+        editFormContainer.style.display = "block";
+        postContainer.style.display = "none";
+        editButton.style.display = "none";
+      });
+    }
+  });
 </script>
