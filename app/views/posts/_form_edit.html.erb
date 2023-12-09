@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.full_messages.each do |error| %>
           <li><%= error %></li>
@@ -10,17 +9,14 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= form.label :title, class: "font-weight-bold text-white" %>
-    <%= form.text_field :title, class: "form-control", placeholder: "Enter the title" %>
+    <%= form.text_field :title, class: "form-control input-transparent", placeholder: "Enter the title" %>
   </div>
-
   <div class="form-group">
     <%= form.label :body, class: "font-weight-bold text-white" %>
-    <%= form.text_area :body, class: "form-control", placeholder: "Enter the body" %>
+    <%= form.text_area :body, class: "form-control input-transparent", placeholder: "Enter the body" %>
   </div>
-
   <div class="form-group">
     <%= form.label :image, class: "font-weight-bold text-white" %>
     <div class="custom-file">
@@ -28,15 +24,26 @@
       <%= form.label :image, class: "custom-file-label text-white", for: "customFile" %>
     </div>
   </div>
-
   <% if current_user.role == 'admin' %>
     <div class="form-group form-check text-white">
-    <%= form.check_box :status, class: "form-check-input text-white" %>
-    <%= form.label :status, class: "form-check-label" %>
-  </div>
+      <%= form.check_box :status, class: "form-check-input text-white" %>
+      <%= form.label :status, class: "form-check-label" %>
+    </div>
   <% end %>
-
   <div class="form-group">
     <%= form.submit class: "btn btn-secondary mt-2 text-white" %>
   </div>
 <% end %>
+<style>
+  .input-transparent {
+  background: #0b1416;
+  border-width: 0;
+  color: white;
+  }
+
+  .input-transparent:focus {
+  background: #0b1416;
+  border-width: 0;
+  color: white;
+  }
+</style>
