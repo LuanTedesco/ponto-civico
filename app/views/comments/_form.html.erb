@@ -13,7 +13,7 @@
 
   <div class="mb-3">
     <%= form.label :content, class: "form-label" %>
-    <%= form.text_field :content, class: "form-control" %>
+    <%= form.text_field :content, class: "form-control input-transparent" %>
   </div>
 
   <% if current_user.role == "admin" %>
@@ -27,3 +27,20 @@
     <%= form.submit class: "btn btn-secondary mt-2" %>
   </div>
 <% end %>
+<style>
+  .input-transparent {
+  background: #0b1416;
+  border-width: 0;
+  color: white;
+  }
+
+  .input-transparent:focus {
+  background: #0b1416;
+  border-width: 0;
+  color: white;
+  }
+
+  .input-transparent::placeholder {
+    color: white;
+  }
+</style>
