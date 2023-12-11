@@ -22,12 +22,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.status = current_user&.role == "user" ? true : @post.status
 
-      @post.save
-        redirect_to post_url(@post), notice: "Post was successfully created."
+    @post.save
+      redirect_to post_url(@post), notice: "Post was successfully created."
   end
 
   def update
+      @post.status = current_user&.role == "user" ? true : @post.status
       @post.update(post_params)
         redirect_to post_url(@post), notice: "Post was successfully updated."
   end
@@ -50,8 +52,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      permitted_params = params.require(:post).permit(:title, :body, :image, :user_id)
-      permitted_params[:status] = params[:status] if current_user.admin? || current_user.moderator?
-      permitted_params
+      params.require(:post).permit(:title, :body, :image, :user_id, :status)
     end
 end

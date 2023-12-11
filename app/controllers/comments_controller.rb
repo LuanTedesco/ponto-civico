@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
+    @comment.status = current_user&.role == "user" ? true : @comment.status
 
     if @comment.save
       create_notification(@post.user, @comment)
@@ -33,6 +34,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    @comment.status = current_user&.role == "user" ? true : @comment.status
     @comment.update(comment_params)
       redirect_to @comment.post, notice: "Comment was successfully updated."
   end
@@ -52,8 +54,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      permitted_params = params.require(:comment).permit(:content, :user_id, :post_id)
-      permitted_params[:status] = params[:status] if current_user.admin? || current_user.moderator?
-      permitted_params
+      params.require(:comment).permit(:content, :user_id, :post_id, :status)
     end
 end
