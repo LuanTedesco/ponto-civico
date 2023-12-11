@@ -11,11 +11,11 @@
   <% end %>
   <div class="form-group">
     <%= form.label :title, class: "font-weight-bold text-white" %>
-    <%= form.text_field :title, class: "form-control input-transparent", placeholder: "Enter the title" %>
+    <%= form.text_field :title, class: "form-control input-transparent", placeholder: "Enter the title", required: true %>
   </div>
   <div class="form-group">
     <%= form.label :body, class: "font-weight-bold text-white" %>
-    <%= form.text_area :body, class: "form-control input-transparent", placeholder: "Enter the body" %>
+    <%= form.text_area :body, class: "form-control input-transparent", placeholder: "Enter the body", required: true %>
   </div>
   <div class="form-group">
     <%= form.label :image, class: "font-weight-bold text-white" %>

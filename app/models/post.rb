@@ -3,4 +3,6 @@ class Post < ApplicationRecord
     has_many :comments
     has_many :likes
     has_one_attached :image
+
+    validates :title, :body ,presence: true
 end
