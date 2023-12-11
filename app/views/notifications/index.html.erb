@@ -1,0 +1,9 @@
+<div class="container mt-4">
+  <h2 class="text-white">Notifications</h2>
+  <% @notifications.each do |notification| %>
+    <div class="alert alert-info" role="alert">
+      <%= notification.body %>
+      <span class="float-right"><%= time_ago_in_words(notification.created_at) %> ago</span>
+    </div>
+  <% end %>
+</div>

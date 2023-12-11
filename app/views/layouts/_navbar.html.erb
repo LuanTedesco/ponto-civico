@@ -28,7 +28,12 @@
   </div>
   <div class="d-flex">
     <% if current_user %>
-      <%= link_to "Profile", profile_path(current_user), class: "btn btn-primary rounded-pill mr-2" %>
+      <%= link_to notifications_path(current_user), class: "btn btn-primary rounded-pill mr-2" do %>
+      <i class="fas fa-bell"></i>
+      <% end %>
+      <%= link_to profile_path(current_user), class: "btn btn-primary rounded-pill mr-2" do %>
+      <i class="fas fa-user"></i> Perfil
+      <% end %>
       <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-primary rounded-pill" %>
     <% else %>
       <%= button_to "Entrar", new_user_session_path, class: "btn btn-primary rounded-pill" %>

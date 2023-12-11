@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      create_notification(@post.user, @comment)
       redirect_to @post, notice: 'Comment was successfully created.'
     else
       render 'posts/show'
@@ -42,6 +43,10 @@ class CommentsController < ApplicationController
   end
 
   private
+    def create_notification(recipient, comment)
+      Notification.create(user: recipient, body: "#{comment.user.username} commented on your post: #{comment.post.title}")
+    end
+
     def set_comment
       @comment = Comment.find(params[:id])
     end

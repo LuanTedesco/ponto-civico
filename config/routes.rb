@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles, only: [:show]
+  resources :notifications, only: [:index]
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

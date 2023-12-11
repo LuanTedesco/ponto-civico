@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   has_one_attached :avatar
+  has_many :notifications, dependent: :destroy
 
   enum role: { user: 'user', admin: 'admin', moderator: 'moderator' }
 end
