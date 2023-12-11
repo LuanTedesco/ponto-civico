@@ -1,0 +1,19 @@
+<div class="profile-container text-center">
+  <h1 class="text-white"><%= @user.username %>'s Profile</h1>
+
+  <div class="avatar-container mx-auto">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.variant(resize: "150x150"), class: "avatar-large rounded-circle" %>
+    <% else %>
+      <%= image_tag "default-avatar.png", class: "avatar-large rounded-circle" %>
+    <% end %>
+  </div>
+
+  <p class="text-white">Username: <%= @user.username %></p>
+
+  <p class="text-white">Email: <%= @user.email %></p>
+
+  <% if current_user && current_user.id == @user.id %>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary rounded-pill mt-3" %>
+  <% end %>
+</div>

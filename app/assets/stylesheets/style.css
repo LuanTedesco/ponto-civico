@@ -32,7 +32,43 @@
   width: 32px;
   height: 32px;
 }
+
+.avatar-medium {
+  width: 200px;
+  height: 200px;
+}
+
 .post-image {
   max-width: 100%;
   display: block;
+}
+
+.avatar-large {
+  width: 150px;
+  height: 150px;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+.profile-container {
+  margin-top: 50px;
+}
+
+.avatar-container {
+  margin-top: 20px;
+}
+
+.text-white {
+  color: white;
+}
+
+.custom-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  text-decoration: underline;
 }

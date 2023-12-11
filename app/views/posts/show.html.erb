@@ -1,7 +1,12 @@
 <div class="container mt-4">
   <div class="custom-card mb-3">
     <div class="custom-card-body bg-color-2 text-white">
-      <p class="post-info"><strong><%= @post.user.username if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago</p>
+      <p class="post-info">
+        <strong>
+          <%= link_to @post.user.username, profile_path(@post.user), class: "custom-link" if @post.user %>
+        </strong>
+        • <%= time_ago_in_words(@post.created_at) %> ago
+      </p>
       <div id="post-container">
         <%= render @post %>
       </div>
