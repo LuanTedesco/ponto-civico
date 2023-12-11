@@ -6,11 +6,11 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field my-4">
           <%= f.label :email, class: "visually-hidden" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-pill", placeholder: "Email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-pill", placeholder: "Email", required: true %>
         </div>
         <div class="field my-4">
           <%= f.label :password, class: "visually-hidden" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control rounded-pill", placeholder: "Senha" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control rounded-pill", placeholder: "Senha", required: true %>
         </div>
         <% if devise_mapping.rememberable? %>
           <div class="field my-4">
