@@ -26,16 +26,12 @@
       </div>
     </form>
   </div>
-  <div>
+  <div class="d-flex">
     <% if current_user %>
+      <%= link_to "Profile", profile_path(current_user), class: "btn btn-primary rounded-pill mr-2" %>
       <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-primary rounded-pill" %>
     <% else %>
       <%= button_to "Entrar", new_user_session_path, class: "btn btn-primary rounded-pill" %>
-    <% end %>
-  </div>
-  <div>
-    <% if current_user %>
-      <%= link_to "Profile", profile_path(current_user), class: "btn btn-primary rounded-pill" %>
     <% end %>
   </div>
 </nav>
