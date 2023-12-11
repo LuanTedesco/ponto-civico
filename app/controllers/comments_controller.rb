@@ -40,8 +40,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    post = @comment.post
     @comment.destroy!
-      redirect_to comments_url, notice: "Comment was successfully destroyed."
+    redirect_to post, notice: "Comment was successfully destroyed."
   end
 
   private
