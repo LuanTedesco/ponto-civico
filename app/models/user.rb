@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   enum role: { user: 'user', admin: 'admin', moderator: 'moderator' }
+
+  validates :username, :email ,presence: true
 end
