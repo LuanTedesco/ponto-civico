@@ -6,6 +6,11 @@
         <div class="comment mb-3 pb-3">
           <hr>
           <p class="comment-info">
+            <% if comment.user.avatar.present? %>
+                  <%= image_tag(comment.user.avatar, class: "avatar-img avatar-small") %>
+                <% else %>
+                  <%= image_tag("default-avatar.png", class: "avatar-img avatar-small") %>
+                <% end %>
             <strong>
               <%= link_to comment.user.username, profile_path(comment.user), class: "custom-link" if comment.user %>
             </strong>
