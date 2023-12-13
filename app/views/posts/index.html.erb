@@ -2,7 +2,7 @@
   <div class="custom-card mb-3">
     <h1 class="mb-4 text-white">Posts</h1>
     <div id="posts">
-      <% @posts.where(status: true).each do |post| %>
+      <% @posts.each do |post| %>
         <div class="custom-card mb-3">
           <%= link_to post, class: "text-decoration-none text-dark" do %>
             <div class="custom-card-body bg-color-2 text-white">

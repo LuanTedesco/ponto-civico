@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
   def index
-    @comments = Comment.all
+    @comments = Comment.where(status: true)
   end
 
   def show

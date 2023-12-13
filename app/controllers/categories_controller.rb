@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :authorize_user
 
   def index
-    @categories = Category.all
+    @categories = Category.where(status: true)
   end
 
   def show
