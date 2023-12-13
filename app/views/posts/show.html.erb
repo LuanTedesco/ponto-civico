@@ -2,10 +2,10 @@
   <div class="custom-card mb-3">
     <div class="custom-card-body bg-color-2 text-white">
       <p class="post-info">
-        <strong>
-          <%= link_to @post.user.username, profile_path(@post.user), class: "custom-link" if @post.user %>
-        </strong>
-        • <%= time_ago_in_words(@post.created_at) %> ago
+        <strong><%= @post.user.username if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago
+        <% if @post.category %>
+          • <span class="post-category" style="color: #168fff;"><%= @post.category.title %></span>
+        <% end %>
       </p>
       <div id="post-container">
         <%= render @post %>
@@ -38,3 +38,8 @@
     }
   });
 </script>
+<style>
+  .post-category {
+    font-weight: bold;
+  }
+</style>

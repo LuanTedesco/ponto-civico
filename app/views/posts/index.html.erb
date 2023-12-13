@@ -8,6 +8,9 @@
             <div class="custom-card-body bg-color-2 text-white">
               <p class="post-info">
                 <strong><%= post.user.username if post.user %></strong> • <%= time_ago_in_words(post.created_at) %> ago
+                <% if post.category %>
+                  • <span class="post-category" style="color: #168fff;"><%= post.category.title %></span>
+                <% end %>
               </p>
               <%= render post %>
             </div>
@@ -25,3 +28,8 @@
     </div>
   </div>
 </div>
+<style>
+  .post-category {
+    font-weight: bold;
+  }
+</style>
