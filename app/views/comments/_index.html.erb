@@ -17,7 +17,7 @@
           <div id="edit-comment-form-container-<%= comment.id %>" style="display: none;">
             <%= render 'comments/form', comment: comment %>
           </div>
-          <% if current_user.id == comment.user_id %>
+          <% if current_user.id == @post.user_id || current_user.role == "admin" %>
             <div class="d-flex justify-content-between" >
               <%= link_to "Edit", "javascript:void(0);", class: "btn btn-dark mr-2 edit-comment-button", id: "edit-comment-button-#{comment.id}" %>
               <%= button_to "Destroy comment", comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
