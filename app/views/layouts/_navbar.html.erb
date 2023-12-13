@@ -34,9 +34,14 @@
       <%= link_to notifications_path(current_user), class: "btn btn-primary rounded-pill mr-2" do %>
       <i class="fas fa-bell"></i>
       <% end %>
-      <%= link_to profile_path(current_user), class: "btn btn-primary rounded-pill mr-2" do %>
-      <i class="fas fa-user"></i> Perfil
+    <%= link_to profile_path(current_user), class: "btn btn-primary rounded-pill mr-2" do %>
+      <% if current_user.avatar.present? %>
+        <%= image_tag(current_user.avatar, class: "avatar-img avatar-small") %>
+      <% else %>
+        <%= image_tag("default-avatar.png", class: "avatar-img avatar-small") %>
       <% end %>
+      Perfil
+    <% end %>
       <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-primary rounded-pill" %>
     <% else %>
       <%= button_to "Entrar", new_user_session_path, class: "btn btn-primary rounded-pill" %>

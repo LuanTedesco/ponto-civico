@@ -2,6 +2,11 @@
   <div class="custom-card mb-3">
     <div class="custom-card-body bg-color-2 text-white">
       <p class="post-info">
+        <% if current_user.avatar.present? %>
+          <%= image_tag(current_user.avatar, class: "avatar-img avatar-small") %>
+        <% else %>
+          <%= image_tag("default-avatar.png", class: "avatar-img avatar-small") %>
+        <% end %>
         <strong><%= link_to @post.user.username, profile_path(@post.user), class: "custom-link" if @post.user %></strong> • <%= time_ago_in_words(@post.created_at) %> ago
         <% if @post.category %>
           • <span class="post-category" style="color: #168fff;"><%= @post.category.title %></span>
